@@ -1,8 +1,10 @@
 import os
 from datasets import load_dataset
 from llama_index.core import Document, VectorStoreIndex
+from dotenv import load_dotenv
 
-os.environ["OPENAI_API_KEY"] = "api key"  #
+load_dotenv()
+print(os.environ["OPENAI_API_KEY"])
 
 dataset = load_dataset('klue', 'mrc', split='train') # 여기!!
 print(dataset[0])

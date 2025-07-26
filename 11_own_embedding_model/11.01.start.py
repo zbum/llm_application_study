@@ -75,65 +75,53 @@ import os
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
 
 ## wandb login 필요합니다.
-# embedding_model.fit(
-#     train_objectives=[(train_dataloader, train_loss)],
-#     evaluator=eval_evaluator,
-#     epochs=num_epochs,
-#     evaluation_steps=1000,  # 평가 주기 설정
-#     warmup_steps=100,
-#     output_path=model_save_path,
-# )
+embedding_model.fit(
+    train_objectives=[(train_dataloader, train_loss)],
+    evaluator=eval_evaluator,
+    epochs=num_epochs,
+    evaluation_steps=1000,  # 평가 주기 설정
+    warmup_steps=100,
+    output_path=model_save_path,
+)
 
-### 실행결과
-# wandb: 🚀 View run at https://wandb.ai/zbum-nhn-dooray/sentence-transformers/runs/omdhev95
-#   0%|          | 0/2628 [00:00<?, ?it/s]/Users/nhn/IdeaProjects/quarkus/rapid_ocr_ex1/.venv/lib/python3.9/site-packages/torch/utils/data/dataloader.py:683: UserWarning: 'pin_memory' argument is set as true but not supported on MPS now, then device pinned memory won't be used.
-#   warnings.warn(warn_msg)
-#  19%|█▉        | 500/2628 [05:08<47:12,  1.33s/it]{'loss': 0.0281, 'grad_norm': 0.8412415981292725, 'learning_rate': 1.6838351822503965e-05, 'epoch': 0.76}
-#  38%|███▊      | 1000/2628 [10:25<11:29,  2.36it/s]{'loss': 0.0081, 'grad_norm': 0.3559873104095459, 'learning_rate': 1.287638668779715e-05, 'epoch': 1.52}
-# {'eval_pearson_cosine': 0.9597710920882392, 'eval_spearman_cosine': 0.9174741951802741, 'eval_runtime': 5.7564, 'eval_samples_per_second': 0.0, 'eval_steps_per_second': 0.0, 'epoch': 1.52}
-#  57%|█████▋    | 1500/2628 [14:39<08:21,  2.25it/s]{'loss': 0.0052, 'grad_norm': 0.2036622315645218, 'learning_rate': 8.914421553090334e-06, 'epoch': 2.28}
-#  76%|███████▌  | 2000/2628 [18:56<04:03,  2.58it/s]{'loss': 0.0034, 'grad_norm': 0.27582746744155884, 'learning_rate': 4.952456418383519e-06, 'epoch': 3.04}
-#  76%|███████▌  | 2000/2628 [19:01<04:03,  2.58it/s]{'eval_pearson_cosine': 0.962240285336236, 'eval_spearman_cosine': 0.9212081579770475, 'eval_runtime': 5.8192, 'eval_samples_per_second': 0.0, 'eval_steps_per_second': 0.0, 'epoch': 3.04}
-#  95%|█████████▌| 2500/2628 [23:12<00:59,  2.15it/s]{'loss': 0.0026, 'grad_norm': 0.22588618099689484, 'learning_rate': 9.904912836767039e-07, 'epoch': 3.81}
-# 100%|██████████| 2628/2628 [24:42<00:00,  1.77it/s]
-# {'train_runtime': 1485.7208, 'train_samples_per_second': 28.272, 'train_steps_per_second': 1.769, 'train_loss': 0.009126491572486755, 'epoch': 4.0}
-# ## 11.9 학습한 임베딩모델의 성능 평가
-# wandb:
-# wandb: Run history:
-# wandb:     eval/pearson_cosine ▁█
-# wandb:            eval/runtime ▁█
-# wandb: eval/samples_per_second ▁▁
-# wandb:    eval/spearman_cosine ▁█
-# wandb:   eval/steps_per_second ▁▁
-# wandb:             train/epoch ▁▃▃▄▆▆██
-# wandb:       train/global_step ▁▃▃▄▆▆██
-# wandb:         train/grad_norm █▃▁▂▁
-# wandb:     train/learning_rate █▆▄▃▁
-# wandb:              train/loss █▃▂▁▁
-# wandb:
-# wandb: Run summary:
-# wandb:      eval/pearson_cosine 0.96224
-# wandb:             eval/runtime 5.8192
-# wandb:  eval/samples_per_second 0.0
-# wandb:     eval/spearman_cosine 0.92121
-# wandb:    eval/steps_per_second 0.0
-# wandb:               total_flos 0.0
-# wandb:              train/epoch 4.0
-# wandb:        train/global_step 2628
-# wandb:          train/grad_norm 0.22589
-# wandb:      train/learning_rate 0.0
-# wandb:               train/loss 0.0026
-# wandb:               train_loss 0.00913
-# wandb:            train_runtime 1485.7208
-# wandb: train_samples_per_second 28.272
-# wandb:   train_steps_per_second 1.769
-# wandb:
-# wandb: 🚀 View run checkpoints/model at: https://wandb.ai/zbum-nhn-dooray/sentence-transformers/runs/omdhev95
-# wandb: ⭐️ View project at: https://wandb.ai/zbum-nhn-dooray/sentence-transformers
-# wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
-# wandb: Find logs at: ./wandb/run-20250720_145949-omdhev95/logs
+# Iteration:  95%|█████████▌| 626/657 [04:26<00:13,  2.31it/s]
+# Iteration:  95%|█████████▌| 627/657 [04:26<00:12,  2.32it/s]
+# Iteration:  96%|█████████▌| 628/657 [04:27<00:12,  2.32it/s]
+# Iteration:  96%|█████████▌| 629/657 [04:27<00:12,  2.32it/s]
+# Iteration:  96%|█████████▌| 630/657 [04:28<00:11,  2.32it/s]
+# Iteration:  96%|█████████▌| 631/657 [04:28<00:11,  2.32it/s]
+# Iteration:  96%|█████████▌| 632/657 [04:29<00:10,  2.31it/s]
+# Iteration:  96%|█████████▋| 633/657 [04:29<00:10,  2.30it/s]
+# Iteration:  96%|█████████▋| 634/657 [04:30<00:09,  2.31it/s]
+# Iteration:  97%|█████████▋| 635/657 [04:30<00:09,  2.31it/s]
+# Iteration:  97%|█████████▋| 636/657 [04:30<00:09,  2.32it/s]
+# Iteration:  97%|█████████▋| 637/657 [04:31<00:08,  2.32it/s]
+# Iteration:  97%|█████████▋| 638/657 [04:31<00:08,  2.32it/s]
+# Iteration:  97%|█████████▋| 639/657 [04:32<00:07,  2.35it/s]
+# Iteration:  97%|█████████▋| 640/657 [04:32<00:07,  2.37it/s]
+# Iteration:  98%|█████████▊| 641/657 [04:32<00:06,  2.34it/s]
+# Iteration:  98%|█████████▊| 642/657 [04:33<00:06,  2.36it/s]
+# Iteration:  98%|█████████▊| 643/657 [04:33<00:05,  2.37it/s]
+# Iteration:  98%|█████████▊| 644/657 [04:34<00:05,  2.40it/s]
+# Iteration:  98%|█████████▊| 645/657 [04:34<00:05,  2.39it/s]
+# Iteration:  98%|█████████▊| 646/657 [04:34<00:04,  2.40it/s]
+# Iteration:  98%|█████████▊| 647/657 [04:35<00:04,  2.42it/s]
+# Iteration:  99%|█████████▊| 648/657 [04:35<00:03,  2.40it/s]
+# Iteration:  99%|█████████▉| 649/657 [04:36<00:03,  2.41it/s]
+# Iteration:  99%|█████████▉| 650/657 [04:36<00:02,  2.42it/s]
+# Iteration:  99%|█████████▉| 651/657 [04:36<00:02,  2.39it/s]
+# Iteration:  99%|█████████▉| 652/657 [04:37<00:02,  2.37it/s]
+# Iteration:  99%|█████████▉| 653/657 [04:37<00:01,  2.40it/s]
+# Iteration: 100%|█████████▉| 654/657 [04:38<00:01,  2.41it/s]
+# Iteration: 100%|█████████▉| 655/657 [04:38<00:00,  2.37it/s]
+# Iteration: 100%|█████████▉| 656/657 [04:39<00:00,  2.37it/s]
+# Iteration: 100%|██████████| 657/657 [04:39<00:00,  2.35it/s]
+# Epoch: 100%|██████████| 4/4 [19:07<00:00, 286.75s/it]
+
 
 print("## 11.9 학습한 임베딩모델의 성능 평가")
 trained_embedding_model = SentenceTransformer(model_save_path)
 print(test_evaluator(trained_embedding_model))
 
+# ## 11.9 학습한 임베딩모델의 성능 평가
+# 0.8900606603141447

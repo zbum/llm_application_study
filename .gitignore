@@ -1,4 +1,5 @@
 .idea
 *.iml
-11own_embedding_model/output
-11own_embedding_model/wandb
+11_own_embedding_model/output
+11_own_embedding_model/wandb
+.env
