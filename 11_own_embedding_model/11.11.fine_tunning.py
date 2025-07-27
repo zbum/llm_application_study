@@ -47,7 +47,7 @@ from sentence_transformers.evaluation import EmbeddingSimilarityEvaluator
 evaluator = EmbeddingSimilarityEvaluator.from_input_examples(examples)
 print(evaluator(sentence_model))
 
-# 0.8202286335316458
+# 0.8190417135548436
 
 
 print("## 11.17 긍정 데이터만으로 학습데이터 구성")
@@ -88,12 +88,22 @@ sentence_model.fit(
 )
 
 # Epoch:   0%|          | 0/1 [00:00<?, ?it/s]
-# Iteration:   0%|          | 0/1097 [00:00<?, ?it/s]
-# Iteration:   0%|          | 1/1097 [00:58<17:55:10, 58.86s/it]
-
-## RuntimeError: MPS backend out of memory (MPS allocated: 17.36 GB, other allocations: 613.56 MB, max allowed: 18.13 GB). Tried to allocate 192.00 MB on private pool. Use PYTORCH_MPS_HIGH_WATERMARK_RATIO=0.0 to disable upper limit for memory allocations (may cause system failure).
-
+# Iteration:   0%|          | 0/2194 [00:00<?, ?it/s]
+# Iteration:   0%|          | 1/2194 [00:02<1:45:31,  2.89s/it]
+# Iteration:   0%|          | 2/2194 [00:04<1:21:48,  2.24s/it]
+# Iteration:   0%|          | 3/2194 [00:05<1:11:23,  1.95s/it]
+# Iteration:   0%|          | 4/2194 [00:07<1:07:59,  1.86s/it]
+# Iteration:   0%|          | 5/2194 [00:09<1:05:47,  1.80s/it]
+#
+# Iteration: 100%|█████████▉| 2190/2194 [1:25:53<00:06,  1.54s/it]
+# Iteration: 100%|█████████▉| 2191/2194 [1:25:54<00:04,  1.54s/it]
+# Iteration: 100%|█████████▉| 2192/2194 [1:25:56<00:03,  1.54s/it]
+# Iteration: 100%|█████████▉| 2193/2194 [1:25:57<00:01,  1.54s/it]
+# Iteration: 100%|██████████| 2194/2194 [1:25:59<00:00,  2.35s/it]
+# Epoch: 100%|██████████| 1/1 [1:25:59<00:00, 5159.48s/it]
 
 
 print("## 11.21 미세 조정한 모델의 성능평가")
 print(evaluator(sentence_model))
+
+## 0.8583253401548017

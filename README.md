@@ -5,3 +5,6 @@
  pip install sentence-transformers==2.7.0 datasets==2.19.0 huggingface_hub==0.23.0 faiss-cpu==1.8.0
  pip install "httpx<0.27.0"
 ```
+
+
+![img.png](img.png)
