@@ -2,4 +2,5 @@
 *.iml
 11_own_embedding_model/output
 11_own_embedding_model/wandb
+11_own_embedding_model/klue_mrc_mnr
 .env

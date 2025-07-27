@@ -60,7 +60,9 @@ for idx, row in df_train_ir.iterrows():
 print("## 11.18 중복 학습 데이터 제거")
 from sentence_transformers import datasets
 
-batch_size = 16
+## M1 16G 노트북에서 안돌아서 눈물을 머금고 8로 조정...
+batch_size = 8
+##batch_size = 16
 loader = datasets.NoDuplicatesDataLoader(train_samples, batch_size=batch_size)
 
 print("## 11.19 NMR 손실함수 불러오기")
@@ -69,6 +71,11 @@ from sentence_transformers import losses
 loss = losses.MultipleNegativesRankingLoss(sentence_model)
 
 print("## 11.20 MRC 데이터셋으로 미세 조정")
+import os
+os.environ["TOKENIZERS_PARALLELISM"] = "false"
+os.environ["PYTORCH_MPS_HIGH_WATERMARK_RATIO"] = "0.0"  # MPS 메모리 할당 상한선 비활성화
+
+
 epochs = 1
 save_path = "./klue_mrc_mnr"
 
@@ -85,3 +92,8 @@ sentence_model.fit(
 # Iteration:   0%|          | 1/1097 [00:58<17:55:10, 58.86s/it]
 
 ## RuntimeError: MPS backend out of memory (MPS allocated: 17.36 GB, other allocations: 613.56 MB, max allowed: 18.13 GB). Tried to allocate 192.00 MB on private pool. Use PYTORCH_MPS_HIGH_WATERMARK_RATIO=0.0 to disable upper limit for memory allocations (may cause system failure).
+
+
+
+print("## 11.21 미세 조정한 모델의 성능평가")
+print(evaluator(sentence_model))
